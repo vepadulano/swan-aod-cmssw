@@ -31,9 +31,9 @@ COPY ./entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
 LABEL \
-    org.label-schema.version="0.1" \
-    org.label-schema.build-date=$BUILD_DATE \
-    org.label-schema.vcs-url="https://gitlab.cern.ch/db/spark-service/docker-registry.git" \
-    org.label-schema.name="SWAN Spark Docker - CERN Spark on Kubernetes" \
-    org.label-schema.vendor="CERN" \
-    org.label-schema.schema-version="1.0"
+  org.label-schema.version="0.1" \
+  org.label-schema.build-date=$BUILD_DATE \
+  org.label-schema.vcs-url="https://gitlab.cern.ch/db/spark-service/docker-registry.git" \
+  org.label-schema.name="SWAN Spark Docker - CERN Spark on Kubernetes" \
+  org.label-schema.vendor="CERN" \
+  org.label-schema.schema-version="1.0"
