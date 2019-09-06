@@ -16,7 +16,8 @@ RUN yum install -y \
 FROM gitlab-registry.cern.ch/linuxsupport/cc7-base:latest
 MAINTAINER Piotr Mrowczynski <piotr.mrowczynski@cern.ch>
 
-RUN yum install -y which curl atlas && \
+RUN yum install -y \
+        which curl atlas HEP_OSlibs && \
     yum clean all && rm -r /var/cache/yum/* && \
     rm /bin/sh && \
     ln -sv /bin/bash /bin/sh && \
@@ -27,6 +28,7 @@ WORKDIR ${SPARK_HOME}/work-dir
 
 COPY --from=tini-builder /tmp/tini /sbin/tini
 COPY ./entrypoint.sh /
+COPY ./cmssw_setup.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
 
