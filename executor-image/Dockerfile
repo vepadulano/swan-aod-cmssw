@@ -17,18 +17,12 @@ FROM gitlab-registry.cern.ch/linuxsupport/cc7-base:latest
 MAINTAINER Piotr Mrowczynski <piotr.mrowczynski@cern.ch>
 
 RUN yum install -y \
-        which curl atlas perl cvmfs cvmfs-config-default && \
+        which curl atlas HEP_OSlibs && \
     yum clean all && rm -r /var/cache/yum/* && \
     rm /bin/sh && \
     ln -sv /bin/bash /bin/sh && \
     chgrp root /etc/passwd && \
     chmod ug+rw /etc/passwd
-
-RUN cvmfs_config setup
-
-COPY ./default.local /etc/cvmfs/
-
-RUN cvmfs_config probe
 
 WORKDIR ${SPARK_HOME}/work-dir
 
